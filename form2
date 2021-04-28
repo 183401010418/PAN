@@ -1,0 +1,176 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace pan
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+            int num = Form1.num;
+            int max = Form1.max;
+            int min = Form1.min;
+            int select = Form1.select;
+            int opr_symbol;
+            Random Random1 = new Random();
+            for (int i = 0; i < num; i++)
+            {
+                switch (select)
+                {
+                    case 1:
+                        {
+                            int rdm1 = Random1.Next(min, max);
+                            int rdm2 = Random1.Next(min, max);
+                            opr_symbol = Random1.Next(0, 2);//随机产生一个操作符
+                            if (rdm1 < 0) richTextBox1.Text += "(" + rdm1 + "）";
+                            else richTextBox1.Text += rdm1;
+                            if (opr_symbol == 0) richTextBox1.Text += "+";
+                            else richTextBox1.Text += "-";
+                            if (rdm2 < 0) richTextBox1.Text += "(" + rdm2 + "）=\n";
+                            else richTextBox1.Text += rdm2 + "=\n";
+                            break;
+                        }
+                    case 2:
+                        {
+                            int rdm1 = Random1.Next(min, max);
+                            int rdm2 = Random1.Next(min, max);
+                            opr_symbol = Random1.Next(0, 4);//随机产生一个操作符
+                            if (rdm1 < 0) richTextBox1.Text += "(" + rdm1 + "）";
+                            else richTextBox1.Text += rdm1;
+                            switch (opr_symbol)
+                            {
+                                case 0: richTextBox1.Text += "+"; break;
+                                case 1: richTextBox1.Text += "-"; break;
+                                case 2: richTextBox1.Text += "*"; break;
+                                case 3: richTextBox1.Text += "/"; break;
+                            }
+                            if (rdm2 < 0) richTextBox1.Text += "(" + rdm2 + "）\n";
+                            else richTextBox1.Text += (rdm2 + 2) + "\n";
+                            break;
+                        }
+                    case 3:
+                        {
+                            int rdm1 = Random1.Next(min, max);
+                            int rdm2 = Random1.Next(min, max);
+                            double rdm3;
+                            opr_symbol = Random1.Next(0, 4);//随机产生一个操作符
+                            switch (opr_symbol)
+                            {
+                                case 0:
+                                    {
+                                        if (Random1.Next(0, 2) == 1)//第一个操作数为小数
+                                        {
+                                            rdm3 = Random1.NextDouble();//产生一个随机的小数
+                                            rdm3 += rdm1;
+                                            rdm3 = Math.Round(rdm3, 1);
+                                            richTextBox1.Text += rdm3;
+                                        }
+                                        else
+                                        {
+                                            if (rdm1 < 0) richTextBox1.Text += "(" + rdm1 + "）";
+                                            else richTextBox1.Text += rdm1;
+                                        }
+                                        richTextBox1.Text += "-";
+                                        if (Random1.Next(0, 2) == 1)//第二个操作数为小数
+                                        {
+                                            rdm3 = Random1.NextDouble();//产生一个随机的小数
+                                            rdm3 += rdm2;
+                                            rdm3 = Math.Round(rdm3, 1);
+                                            richTextBox1.Text += rdm3 + "=\n";
+                                        }
+                                        else
+                                        {
+                                            if (rdm2 < 0) richTextBox1.Text += "(" + rdm2 + "）=\n";
+                                            else richTextBox1.Text += rdm2 + "=\n";
+                                        }
+                                        break;
+                                    }
+                                case 1:
+                                    {
+                                        if (Random1.Next(0, 2) == 1)//第一个操作数为小数
+                                        {
+                                            rdm3 = Random1.NextDouble();//产生一个随机的小数
+                                            rdm3 += rdm1;
+                                            rdm3 = Math.Round(rdm3, 1);
+                                            richTextBox1.Text += rdm3;
+                                        }
+                                        else
+                                        {
+                                            if (rdm1 < 0) richTextBox1.Text += "(" + rdm1 + "）";
+                                            else richTextBox1.Text += rdm1;
+                                        }
+                                        richTextBox1.Text += "-";
+                                        if (Random1.Next(0, 2) == 1)//第二个操作数为小数
+                                        {
+                                            rdm3 = Random1.NextDouble();//产生一个随机的小数
+                                            rdm3 += rdm2;
+                                            rdm3 = Math.Round(rdm3, 1);
+                                            richTextBox1.Text += rdm3 + "=\n";
+                                        }
+                                        else
+                                        {
+                                            if (rdm2 < 0) richTextBox1.Text += "(" + rdm2 + "）=\n";
+                                            else richTextBox1.Text += rdm2 + "=\n";
+                                        }
+                                        break;
+                                    }
+                                case 2:
+                                    {
+                                        if (rdm1 < 0) richTextBox1.Text += "(" + rdm1 + "）";
+                                        else richTextBox1.Text += rdm1;
+                                        richTextBox1.Text += "*";
+                                        if (rdm2 < 0) richTextBox1.Text += "(" + rdm2 + "）\n";
+                                        else richTextBox1.Text += rdm2 + "=\n";
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        if (rdm1 < 0) richTextBox1.Text += "(" + rdm1 + "）";
+                                        else richTextBox1.Text += rdm1;
+                                        richTextBox1.Text += "/";
+                                        if (rdm2 < 0) richTextBox1.Text += "(" + rdm2 + "）\n";
+                                        else richTextBox1.Text += (rdm2 + 2) + "=\n";
+                                        break;
+                                    }
+                            }
+                            break;
+                        }
+                    case 4:
+                        {
+                            int rdm1 = Random1.Next(min, max);
+                            int rdm2 = Random1.Next(min, max);
+                            int rdm3 = Random1.Next(1, max);
+                            richTextBox1.Text += "(";
+                            if (rdm1 < 0) richTextBox1.Text += "(" + rdm1 + ")";//判断rdm1是否为负数
+                            else richTextBox1.Text += rdm1;
+                            if (Random1.Next(0, 2) == 1) richTextBox1.Text += "+";//确定括号内的符号
+                            else richTextBox1.Text += "-";
+                            if (rdm2 < 0) richTextBox1.Text += "(" + rdm2 + "))";//判断rdm2是否为负数
+                            else richTextBox1.Text += rdm2 + ")";
+                            if (Random1.Next(0, 2) == 1) richTextBox1.Text += "*" + rdm3 + "=\n";//确定括号外的符号
+                            else richTextBox1.Text += "/" + rdm3 + "=\n";
+                            break;
+                        }
+                }
+            }
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}
